@@ -17,7 +17,7 @@ export const post = async (req,res) => {
             .map(x => x.split(',')
             .filter(x => x.length > 1 ))
             .map(x => {
-                print(x.length);
+                console.log(x.length);
                 return {
                     vehicle_id: x[0],
                     datapoint_id: x[1],
