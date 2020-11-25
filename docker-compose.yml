@@ -22,6 +22,9 @@ services:
     restart: unless-stopped
     ports: 
       - 8604:27017
+    volume:
+      - db:
 
 volumes:
   proxy:
+  db:
