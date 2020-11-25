@@ -1,0 +1,27 @@
+version: '3.0'
+
+services:
+  proxy: 
+    build: ./nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+
+  web:
+    build: ./web
+    restart: unless-stopped
+    environment:
+      - 'MONGODB=db:27017'
+    volumes:
+      - "./web/src:/app/src"
+    expose: 
+      - 3000
+
+  db:
+    image: mongo
+    restart: unless-stopped
+    ports: 
+      - 8604:27017
+
+volumes:
+  proxy:
