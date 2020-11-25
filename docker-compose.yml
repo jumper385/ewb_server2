@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     ports: 
       - 8604:27017
-    volume:
+    volumes:
       - db:
 
 volumes:
