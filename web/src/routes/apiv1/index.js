@@ -15,7 +15,7 @@ export const post = async (req,res) => {
             .split('||')
             .filter(x => x != '')
             .map(x => x.split(',')
-            .filter(x => x.length > 1 ))
+            .filter(x => x.length > 6))
             .map(x => {
                 console.log(x.length);
                 return {
