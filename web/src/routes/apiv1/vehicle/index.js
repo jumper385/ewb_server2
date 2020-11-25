@@ -9,5 +9,5 @@ export const get = async (req,res) => {
         vehicle_id: new_vehicle_id
     });
 
-    return vehicleDocument;
+    res.json(vehicleDocument);
 }
