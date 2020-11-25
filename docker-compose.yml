@@ -23,7 +23,8 @@ services:
     ports: 
       - 8604:27017
     volumes:
-      - db:./db/data
+      - ./init-mongo.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+      - ./mongo-volume:/data/db
 
 volumes:
   proxy:
