@@ -23,7 +23,7 @@ services:
     ports: 
       - 8604:27017
     volumes:
-      - db:
+      - db:db/data
 
 volumes:
   proxy:
