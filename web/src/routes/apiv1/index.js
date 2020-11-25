@@ -29,7 +29,7 @@ export const post = async (req,res) => {
                 }
             });
 
-        let collections = postCollection(Datapoint, rows);
+        let collections = postCollection(Datapoint, rows[rows.length-1]);
         console.log(`Saved Upload from ${filename}`);
 
         res.json('success');
