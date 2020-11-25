@@ -15,9 +15,9 @@ export const post = async (req,res) => {
             .split('||')
             .filter(x => x != '')
             .map(x => x.split(',')
-            .filter(x => x.length > 6))
+            .filter(x => x.length > 5))
             .map(x => {
-                console.log(x.length);
+                print(x);
                 return {
                     vehicle_id: x[0],
                     datapoint_id: x[1],
