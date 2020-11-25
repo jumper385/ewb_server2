@@ -9,3 +9,8 @@ export const Datapoint = mongoose.model('datapoint', {
     'timezone':{type: String, required: true},
     'filename':{type: String}
 })
+
+export const Vehicle = mongoose.model('vehicle', {
+    'vehicle_id': {type: String, required: true}, 
+    'dateCreated':{type: Date, required: true, default: new Date()}
+})
