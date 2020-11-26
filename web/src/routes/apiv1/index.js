@@ -1,5 +1,6 @@
 import { queryCollection, postCollection } from "../../helpers/dbhelpers"
 import { Datapoint } from "../../helpers/schemas"
+import * as chalk from 'chalk';
 
 export const get = async (req,res) => {
 	let {query} = req.body;
@@ -30,7 +31,7 @@ export const post = async (req,res) => {
 
 		if (rows.length > 0) {
 			let collections = await postCollection(Datapoint, rows);
-			collections && console.log(`Saved Upload from ${filename}`);
+			collections && console.log(`${chalk.green("Saved")} upload from ${chalk.bgGreen.underline(filename)}`);
 		}
 		res.json('success');
 

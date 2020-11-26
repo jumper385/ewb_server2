@@ -8,6 +8,7 @@ export const get = async (req,res) => {
 	let vehicleDocument = await postCollection(Vehicle, {
 		vehicle_id: new_vehicle_id
 	});
+
 	console.log(vehicleDocument);
 	res.json(vehicleDocument);
 }
