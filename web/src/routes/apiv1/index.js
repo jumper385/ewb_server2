@@ -30,11 +30,11 @@ export const post = async (req, res) => {
 					uploadFileName: filename,
 				}
 			})
-		console.log(`${filename} upload by ${rows[0].vehicle_id}`);
+		console.log(`${chalk.bgYellow.underline(filename)} upload by ${chalk.bgCyan(rows[0].vehicle_id)}`);
 
 		if (rows.length > 0) {
 			let collections = await postCollection(Datapoint, rows);
-			collections && console.log(`Saved Upload from ${filename} at ${(new Date()).toLocaleTimeString()}`);
+			collections && console.log(`${chalk.bgGreen.underline('Saved')} Upload from ${chalk.bgGreen.underline(filename)} at ${(new Date()).toLocaleTimeString()}`);
 		}
 		res.json('success');
 	} catch (e) {
