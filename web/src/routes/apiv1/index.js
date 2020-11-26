@@ -2,7 +2,7 @@ import { queryCollection, postCollection } from "../../helpers/dbhelpers"
 import { Datapoint } from "../../helpers/schemas"
 
 export const get = async (req,res) => {
-	let {query} = req.params;
+	let {query} = req.body;
 	res.json({
 		payload:await queryCollection(Datapoint, query)
 	});
@@ -15,9 +15,7 @@ export const post = async (req,res) => {
 			.split('||')
 			.filter(x => x != undefined && x != '')
 			.map(x => x.split(','))
-			.filter(x => {
-				return x[2] != undefined && x[3] != undefined && x[4] != undefined
-			})
+			.filter(x => !x.includes(undefined))
 			.map(x => {
 				return {
 					vehicle_id: x[0],
@@ -29,11 +27,10 @@ export const post = async (req,res) => {
 					uploadFileName: filename,
 				}
 			})
-		console.log(`${filename} upload by ${rows[0].vehicle_id}`);		
 
 		if (rows.length > 0) {
 			let collections = await postCollection(Datapoint, rows);
-			collections && console.log(`Saved Upload from ${filename} at ${(new Date()).toLocaleTimeString()}`);
+			collections && console.log(`Saved Upload from ${filename}`);
 		}
 		res.json('success');
 
