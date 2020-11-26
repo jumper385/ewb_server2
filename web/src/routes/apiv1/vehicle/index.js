@@ -2,7 +2,7 @@ import * as shortid from 'shortid';
 import { postCollection, queryCollection } from '../../../helpers/dbhelpers';
 import { Vehicle } from '../../../helpers/schemas';
 
-export const get = async (req,res) => {
+export const get = async (req, res) => {
 	let new_vehicle_id = shortid.generate();
 
 	let vehicleDocument = await postCollection(Vehicle, {
@@ -13,9 +13,9 @@ export const get = async (req,res) => {
 	res.json(vehicleDocument);
 }
 
-export const post  = async (req,res) => {
+export const post = async (req, res) => {
 	let { vehicle_id } = req.body;
-	let vehicle = await queryCollection(Vehicle, {vehicle_id:vehicle_id})
+	let vehicle = await queryCollection(Vehicle, { vehicle_id: vehicle_id })
 	console.log(vehicle.length);
 	// return a new vehicle id if the query fails (i.e.length == 0)
 	if (vehicle.length == 0) {
@@ -33,6 +33,4 @@ export const post  = async (req,res) => {
 			payload: vehicle[0],
 		})
 	}
-
-
 }
